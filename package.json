@@ -1,0 +1,32 @@
+{
+  "name": "xstream-extra-pouchdb",
+  "version": "1.0.0",
+  "description": "xstream operators for PouchDB operations",
+  "main": "index.js",
+  "scripts": {
+    "test": "tsc -p ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WorldMaker/xstream-extra-pouchdb.git"
+  },
+  "keywords": [
+    "xstream",
+    "pouchdb"
+  ],
+  "author": "Max Battcher <me@worldmaker.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/WorldMaker/xstream-extra-pouchdb/issues"
+  },
+  "homepage": "https://github.com/WorldMaker/xstream-extra-pouchdb#readme",
+  "dependencies": {
+    "pouchdb-browser": "^6.3.4",
+    "xstream": "^10.9.0"
+  },
+  "devDependencies": {
+    "tslint": "^5.6.0",
+    "tslint-config-standard": "^6.0.1",
+    "typescript": "^2.4.2"
+  }
+}
