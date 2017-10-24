@@ -1,30 +1,29 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var xstream_1 = require("xstream");
-var PouchSyncProducer = (function () {
-    function PouchSyncProducer(db, remote, options) {
+const xstream_1 = require("xstream");
+class PouchSyncProducer {
+    constructor(db, remote, options) {
         this.db = db;
         this.remote = remote;
         this.options = options;
     }
-    PouchSyncProducer.prototype.start = function (listener) {
+    start(listener) {
         listener.next({ type: 'new', info: this.remote });
         this.sync = this.db.sync(this.remote, this.options)
-            .on('change', function (info) { return listener.next({ type: 'change', info: info }); })
-            .on('paused', function (error) { return listener.next({ type: 'paused', error: error }); })
-            .on('active', function () { return listener.next({ type: 'active' }); })
-            .on('denied', function (error) { return listener.next({ type: 'denied', error: error }); })
-            .on('complete', function (info) {
-            listener.next({ type: 'complete', info: info });
+            .on('change', (info) => listener.next({ type: 'change', info }))
+            .on('paused', (error) => listener.next({ type: 'paused', error }))
+            .on('active', () => listener.next({ type: 'active' }))
+            .on('denied', (error) => listener.next({ type: 'denied', error }))
+            .on('complete', (info) => {
+            listener.next({ type: 'complete', info });
             listener.complete();
         })
-            .on('error', function (error) { return listener.error(error); });
-    };
-    PouchSyncProducer.prototype.stop = function () {
+            .on('error', (error) => listener.error(error));
+    }
+    stop() {
         this.sync.cancel();
-    };
-    return PouchSyncProducer;
-}());
+    }
+}
 /**
  * Factory for a stream of PouchDB synchronization status information
  *

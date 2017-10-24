@@ -1,4 +1,3 @@
-import PouchDB from 'pouchdb-browser'
 import xs, { Listener, Producer } from 'xstream'
 
 class PouchChangeProducer implements Producer<PouchDB.Core.ChangesResponseChange<{}>> {
@@ -10,7 +9,7 @@ class PouchChangeProducer implements Producer<PouchDB.Core.ChangesResponseChange
     start(listener: Listener<PouchDB.Core.ChangesResponseChange<{}>>) {
         this.emitter = this.db.changes(this.options)
             .on('change', change => listener.next(change))
-            .on('complete', info => listener.complete())
+            .on('complete', () => listener.complete())
             .on('error', error => listener.error(error))
     }
 

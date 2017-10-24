@@ -1,4 +1,3 @@
-import PouchDB from 'pouchdb-browser'
 import xs, { Listener, Producer } from 'xstream'
 
 export interface PouchSync {

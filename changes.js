@@ -1,24 +1,23 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var xstream_1 = require("xstream");
-var PouchChangeProducer = (function () {
-    function PouchChangeProducer(db, options) {
+const xstream_1 = require("xstream");
+class PouchChangeProducer {
+    constructor(db, options) {
         this.db = db;
         this.options = options;
     }
-    PouchChangeProducer.prototype.start = function (listener) {
+    start(listener) {
         this.emitter = this.db.changes(this.options)
-            .on('change', function (change) { return listener.next(change); })
-            .on('complete', function (info) { return listener.complete(); })
-            .on('error', function (error) { return listener.error(error); });
-    };
-    PouchChangeProducer.prototype.stop = function () {
+            .on('change', change => listener.next(change))
+            .on('complete', () => listener.complete())
+            .on('error', error => listener.error(error));
+    }
+    stop() {
         if (this.emitter) {
             this.emitter.cancel();
         }
-    };
-    return PouchChangeProducer;
-}());
+    }
+}
 /**
  * Factory for a stream of PouchDB changes.
  *

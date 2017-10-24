@@ -4,6 +4,7 @@
   "description": "xstream operators for PouchDB operations",
   "main": "index.js",
   "scripts": {
+    "compile": "tsc -p .",
     "test": "tsc -p ."
   },
   "repository": {
@@ -21,7 +22,7 @@
   },
   "homepage": "https://github.com/WorldMaker/xstream-extra-pouchdb#readme",
   "dependencies": {
-    "pouchdb-browser": "^6.3.4",
+    "@types/pouchdb-browser": "^6.1.1",
     "xstream": "^10.9.0"
   },
   "devDependencies": {
