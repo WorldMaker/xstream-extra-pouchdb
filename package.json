@@ -23,7 +23,7 @@
   "homepage": "https://github.com/WorldMaker/xstream-extra-pouchdb#readme",
   "dependencies": {
     "@types/pouchdb-browser": "^6.1.1",
-    "xstream": "^10.9.0"
+    "xstream": "^11.1.0"
   },
   "devDependencies": {
     "tslint": "^5.6.0",
